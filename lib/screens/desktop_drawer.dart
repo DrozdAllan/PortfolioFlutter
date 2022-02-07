@@ -18,16 +18,21 @@ class DesktopDrawer extends StatelessWidget {
             children: [
               Container(
                 decoration: const BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                            width: 0.5,
-                            color: Color.fromARGB(150, 255, 255, 255)))),
-                padding: const EdgeInsets.only(top: 40.0),
+                  border: Border(
+                    bottom: BorderSide(
+                      width: 0.5,
+                      color: Color.fromARGB(150, 255, 255, 255),
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Column(
                   children: [
                     // TODO: cut the image to 90x90
                     Image.asset(
                       'PortfolioLogo.png',
+                      width: 90.0,
+                      height: 90.0,
                     ),
                     const Text(
                       'Allan Drozd',

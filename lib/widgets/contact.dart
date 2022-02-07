@@ -1,4 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+
+import 'package:portfolio_flutter/models/firestore_message_model.dart';
+import 'package:portfolio_flutter/services/mailer.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
@@ -11,6 +16,10 @@ class _ContactState extends State<Contact> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _mailController;
   late TextEditingController _messageController;
+
+  RegExp regExp = RegExp(r"[^\s]+@[^\s]+\.[^\s]+");
+
+  bool isSuccessSent = false;
 
   @override
   void initState() {
@@ -26,10 +35,10 @@ class _ContactState extends State<Contact> {
       child: Column(
         children: [
           Row(
-            children: const [
+            children: [
               Text(
                 'Let\'s talk !',
-                style: TextStyle(color: Colors.white, fontSize: 34.0),
+                style: Theme.of(context).textTheme.headline2,
               ),
             ],
           ),
@@ -39,32 +48,81 @@ class _ContactState extends State<Contact> {
           Row(
             children: [
               Container(
-                padding: EdgeInsets.all(8.0),
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  ),
+                ),
+                padding: const EdgeInsets.all(34.0),
                 width: MediaQuery.of(context).size.width / 2,
-                child: Card(
-                  margin: EdgeInsets.all(12.0),
-                  child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            controller: _mailController,
-                            decoration: InputDecoration(
-                              label: Text('Your mail'),
-                            ),
+                height: MediaQuery.of(context).size.height / 2,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextFormField(
+                        controller: _mailController,
+                        decoration: const InputDecoration(
+                          label: Text(
+                            'Your mail',
                           ),
-                          TextFormField(
-                            controller: _messageController,
-                            decoration: InputDecoration(
-                              label: Text('Your message'),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: Text('SEND MESSAGE'),
-                          ),
-                        ],
-                      )),
+                        ),
+                        cursorColor: Colors.white,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a valid email address';
+                          }
+                          if (regExp.hasMatch(value)) {
+                            return null;
+                          }
+                          return 'invalid mail format';
+                        },
+                      ),
+                      TextFormField(
+                        controller: _messageController,
+                        maxLines: 6,
+                        decoration: const InputDecoration(
+                          label: Text('Your message'),
+                        ),
+                        cursorColor: Colors.white,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please at least 80 characters';
+                          }
+                          return null;
+                        },
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                isSuccessSent
+                                    ? Colors.green
+                                    : Color.fromARGB(255, 24, 255, 236))),
+                        child: Text(
+                            isSuccessSent ? 'Message sent !' : 'Send Message'),
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            log('form valid');
+                            dynamic resultCode = await Mailer().saveMessage(
+                                FirestoreMessage(
+                                    mail: _mailController.value.text,
+                                    message: _messageController.value.text));
+                            if (resultCode == 201) {
+                              setState(() {
+                                isSuccessSent = true;
+                              });
+                              _formKey.currentState!.reset();
+                            }
+                          } else {
+                            log('invalid form');
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

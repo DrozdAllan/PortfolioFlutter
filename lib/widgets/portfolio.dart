@@ -41,10 +41,10 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
       child: Column(
         children: [
           Row(
-            children: const [
+            children: [
               Text(
                 'What I\'ve done',
-                style: TextStyle(color: Colors.white, fontSize: 34.0),
+                style: Theme.of(context).textTheme.headline2,
               ),
             ],
           ),
@@ -76,8 +76,11 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        "My Next Game is an Android app where the user can get a videogame title and cover either by answering 4 questions or by complete randomization. It is made with Flutter and Firebase for the database. I went for a fun design with a cheerful tone for logo and colors. For a quick peek see Web Preview and for the Google Play Store see My Next Game",
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "My Next Game is an Android app where the user can get a videogame title and cover either by answering 4 questions or by complete randomization. It is made with Flutter and Firebase for the database. I went for a fun design with a cheerful tone for logo and colors. For a quick peek see Web Preview and for the Google Play Store see My Next Game",
+                        ),
                       ),
                       Image.asset(
                         'screenshots/mynextgame/AppPresentation.png',
@@ -91,8 +94,11 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          "Lanya is a website based on a typical e-shop layout, using Firebase and Stripe, combined with Vue 2 and Vuetify to make a Single Page Application. Link available soon",
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Lanya is a website based on a typical e-shop layout, using Firebase and Stripe, combined with Vue 2 and Vuetify to make a Single Page Application. Link available soon",
+                          ),
                         ),
                         CarouselSlider(
                           // check params of the plugin
@@ -112,8 +118,6 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
                                   width: MediaQuery.of(context).size.width,
                                   margin: const EdgeInsets.symmetric(
                                       horizontal: 5.0),
-                                  decoration:
-                                      const BoxDecoration(color: Colors.amber),
                                   child: Image.asset(
                                     i,
                                     fit: BoxFit.cover,

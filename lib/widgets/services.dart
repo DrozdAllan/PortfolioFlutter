@@ -16,10 +16,10 @@ class _ServicesState extends State<Services> {
       child: Column(
         children: [
           Row(
-            children: const [
+            children: [
               Text(
                 'What I can do for you',
-                style: TextStyle(color: Colors.white, fontSize: 34.0),
+                style: Theme.of(context).textTheme.headline2,
               ),
             ],
           ),

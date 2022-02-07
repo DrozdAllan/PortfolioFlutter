@@ -35,10 +35,10 @@ class _AboutState extends State<About> {
             height: 100.0,
           ),
           Row(
-            children: const [
+            children: [
               Text(
                 'Who I am',
-                style: TextStyle(color: Colors.white, fontSize: 34.0),
+                style: Theme.of(context).textTheme.headline2,
               ),
             ],
           ),
@@ -49,7 +49,6 @@ class _AboutState extends State<About> {
             children: const [
               Text(
                 'A selfmade enthusiast fullstack developer',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
               ),
             ],
           ),
@@ -57,7 +56,6 @@ class _AboutState extends State<About> {
             children: const [
               Text(
                 'Armed with Flutter, Vue and Firebase',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
               ),
             ],
           ),
@@ -65,7 +63,6 @@ class _AboutState extends State<About> {
             children: const [
               Text(
                 'Welcome to my page',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
               ),
             ],
           ),

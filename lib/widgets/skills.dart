@@ -28,10 +28,10 @@ class _SkillsState extends State<Skills> {
       child: Column(
         children: [
           Row(
-            children: const [
+            children: [
               Text(
                 'What I know',
-                style: TextStyle(color: Colors.white, fontSize: 34.0),
+                style: Theme.of(context).textTheme.headline2,
               ),
             ],
           ),
