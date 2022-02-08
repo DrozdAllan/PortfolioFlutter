@@ -5,7 +5,9 @@ ThemeData myTheme = ThemeData(
   primarySwatch: Colors.blue,
   brightness: Brightness.dark,
   textTheme: TextTheme(
-    bodyText2: GoogleFonts.raleway(fontWeight: FontWeight.w300, fontSize: 16),
+    bodyText2: GoogleFonts.raleway(
+        fontWeight: FontWeight.w300, fontSize: 18, letterSpacing: 0.5),
+
     subtitle1: GoogleFonts.raleway(fontWeight: FontWeight.w300),
     // all category titles
     headline2: GoogleFonts.raleway(

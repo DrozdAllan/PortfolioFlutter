@@ -11,6 +11,8 @@ class Skills extends StatefulWidget {
 }
 
 class _SkillsState extends State<Skills> {
+  late bool mobile;
+
   bool flutterIconState = false;
   bool firebaseIconState = false;
   bool vueIconState = false;
@@ -23,11 +25,20 @@ class _SkillsState extends State<Skills> {
 
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.of(context).size.height >
+        MediaQuery.of(context).size.width) {
+      mobile = true;
+    } else {
+      mobile = false;
+    }
+
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           Row(
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               Text(
                 'What I know',
@@ -40,7 +51,10 @@ class _SkillsState extends State<Skills> {
           ),
           Row(
             children: const [
-              Text('Programming'),
+              Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text('Programming'),
+              ),
             ],
           ),
           const SizedBox(
@@ -63,7 +77,10 @@ class _SkillsState extends State<Skills> {
           ),
           Row(
             children: const [
-              Text('Design'),
+              Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text('Design'),
+              ),
             ],
           ),
           const SizedBox(

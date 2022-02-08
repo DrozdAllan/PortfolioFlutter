@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_flutter/utils/custom_icons_icons.dart';
 
 class DesktopDrawer extends StatelessWidget {
-  final PageController pager;
+  final PageController desktopPager;
   const DesktopDrawer({
     Key? key,
-    required this.pager,
+    required this.desktopPager,
   }) : super(key: key);
 
   @override
@@ -60,7 +60,7 @@ class DesktopDrawer extends StatelessWidget {
                 ),
                 title: const Text('About Me'),
                 onTap: () {
-                  pager.animateTo(0,
+                  desktopPager.animateTo(0,
                       duration: const Duration(milliseconds: 800),
                       curve: Curves.easeIn);
                 },
@@ -72,7 +72,7 @@ class DesktopDrawer extends StatelessWidget {
                 ),
                 title: const Text('Services'),
                 onTap: () {
-                  pager.animateTo(MediaQuery.of(context).size.height,
+                  desktopPager.animateTo(MediaQuery.of(context).size.height,
                       duration: const Duration(milliseconds: 800),
                       curve: Curves.easeIn);
                 },
@@ -84,7 +84,7 @@ class DesktopDrawer extends StatelessWidget {
                 ),
                 title: const Text('Skills'),
                 onTap: () {
-                  pager.animateTo(MediaQuery.of(context).size.height * 2,
+                  desktopPager.animateTo(MediaQuery.of(context).size.height * 2,
                       duration: const Duration(milliseconds: 800),
                       curve: Curves.easeIn);
                 },
@@ -96,7 +96,7 @@ class DesktopDrawer extends StatelessWidget {
                 ),
                 title: const Text('Portfolio'),
                 onTap: () {
-                  pager.animateTo(MediaQuery.of(context).size.height * 3,
+                  desktopPager.animateTo(MediaQuery.of(context).size.height * 3,
                       duration: const Duration(milliseconds: 800),
                       curve: Curves.easeIn);
                 },
@@ -108,11 +108,30 @@ class DesktopDrawer extends StatelessWidget {
                 ),
                 title: const Text('Contact'),
                 onTap: () {
-                  pager.animateTo(MediaQuery.of(context).size.height * 4,
+                  desktopPager.animateTo(MediaQuery.of(context).size.height * 4,
                       duration: const Duration(milliseconds: 800),
                       curve: Curves.easeIn);
                 },
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Image.asset(
+                      'assets/icons/united-kingdom.png',
+                    ),
+                    iconSize: 40.0,
+                    splashRadius: 30.0,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Image.asset('assets/icons/france.png'),
+                    iconSize: 40.0,
+                    splashRadius: 30.0,
+                  ),
+                ],
+              )
             ],
           ),
         )

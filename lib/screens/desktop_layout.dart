@@ -21,15 +21,14 @@ class DesktopLayout extends StatefulWidget {
 }
 
 class _DesktopLayoutState extends State<DesktopLayout> {
-//   final ScrollController _scrollController = ScrollController();
   final sink = StreamController<double>();
-  final pager = PageController();
+  final desktopPager = PageController();
 
   @override
   void initState() {
     super.initState();
     throttle(sink.stream).listen((offset) {
-      pager.animateTo(
+      desktopPager.animateTo(
         offset,
         duration: const Duration(milliseconds: 200),
         curve: Curves.ease,
@@ -40,7 +39,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   @override
   void dispose() {
     sink.close();
-    pager.dispose();
+    desktopPager.dispose();
     super.dispose();
   }
 
@@ -49,14 +48,14 @@ class _DesktopLayoutState extends State<DesktopLayout> {
     return Scaffold(
       backgroundColor: Colors.blue,
       body: Row(children: [
-        DesktopDrawer(pager: pager),
+        DesktopDrawer(desktopPager: desktopPager),
         Expanded(
           flex: 5,
           child: Listener(
             onPointerSignal: _handlePointerSignal,
             child: _IgnorePointerSignal(
               child: SingleChildScrollView(
-                controller: pager,
+                controller: desktopPager,
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
                   width: 2000,
@@ -86,11 +85,11 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   }
 
   Stream<double> throttle(Stream<double> src) async* {
-    double offset = pager.position.pixels;
+    double offset = desktopPager.position.pixels;
     DateTime dt = DateTime.now();
     await for (var delta in src) {
       if (DateTime.now().difference(dt) > const Duration(milliseconds: 200)) {
-        offset = pager.position.pixels;
+        offset = desktopPager.position.pixels;
       }
       dt = DateTime.now();
       offset += delta;

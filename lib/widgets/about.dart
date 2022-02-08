@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
@@ -8,24 +9,34 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
+  late bool mobile;
+
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.of(context).size.height >
+        MediaQuery.of(context).size.width) {
+      mobile = true;
+    } else {
+      mobile = false;
+    }
+
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.end,
             children: [
               Column(
                 children: const [
                   Text(
                     'Allan Drozd',
-                    style: TextStyle(color: Colors.white, fontSize: 64.0),
+                    style: TextStyle(fontSize: 64.0),
                   ),
                   Text(
                     'Developer',
-                    style: TextStyle(color: Colors.white, fontSize: 62.0),
+                    style: TextStyle(fontSize: 62.0),
                   ),
                 ],
               ),
@@ -35,6 +46,8 @@ class _AboutState extends State<About> {
             height: 100.0,
           ),
           Row(
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               Text(
                 'Who I am',
@@ -46,24 +59,21 @@ class _AboutState extends State<About> {
             height: 100.0,
           ),
           Row(
-            children: const [
-              Text(
-                'A selfmade enthusiast fullstack developer',
-              ),
-            ],
-          ),
-          Row(
-            children: const [
-              Text(
-                'Armed with Flutter, Vue and Firebase',
-              ),
-            ],
-          ),
-          Row(
-            children: const [
-              Text(
-                'Welcome to my page',
-              ),
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.start,
+            children: [
+              RichText(
+                  text: TextSpan(
+                      text: 'A selfmade enthusiast fullstack developer \n',
+                      style: GoogleFonts.raleway(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 18,
+                          letterSpacing: 3.5),
+                      children: const [
+                    TextSpan(text: 'Armed with Flutter, Vue and Firebase \n'),
+                    TextSpan(text: 'Welcome to my page'),
+                  ])),
             ],
           ),
         ],

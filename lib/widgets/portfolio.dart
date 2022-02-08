@@ -10,6 +10,8 @@ class Portfolio extends StatefulWidget {
 }
 
 class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
+  late bool mobile;
+
   late TabController _tabController;
 
   @override
@@ -27,6 +29,13 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.of(context).size.height >
+        MediaQuery.of(context).size.width) {
+      mobile = true;
+    } else {
+      mobile = false;
+    }
+
     final List lanyaScreens = [
       'screenshots/lanya/Screenshot1.png',
       'screenshots/lanya/Screenshot2.png',
@@ -41,6 +50,8 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               Text(
                 'What I\'ve done',
@@ -64,31 +75,36 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
               ],
             ),
           ),
-          // Faire une fade transition de chaque text de l'app
           Column(
             children: [
               Container(
                 color: Colors.blue,
                 // TODO: relative size
                 // MANDATORY
-                height: MediaQuery.of(context).size.height / 1.20,
+                height: MediaQuery.of(context).size.height / 1.25,
                 child: TabBarView(controller: _tabController, children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "My Next Game is an Android app where the user can get a videogame title and cover either by answering 4 questions or by complete randomization. It is made with Flutter and Firebase for the database. I went for a fun design with a cheerful tone for logo and colors. For a quick peek see Web Preview and for the Google Play Store see My Next Game",
+                  // IMAGES MY NEXT GAME
+                  Container(
+                    color: Colors.blue,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "My Next Game is an Android app where the user can get a videogame title and cover either by answering 4 questions or by complete randomization. It is made with Flutter and Firebase for the database. I went for a fun design with a cheerful tone for logo and colors. For a quick peek see Web Preview and for the Google Play Store see My Next Game",
+                          ),
                         ),
-                      ),
-                      Image.asset(
-                        'screenshots/mynextgame/AppPresentation.png',
-                        // fit: BoxFit.contain,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
+                        Expanded(
+                          child: Image.asset(
+                            'screenshots/mynextgame/AppPresentation.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                  // IMAGES LANYA
                   Container(
                     color: Colors.blue,
                     child: Column(
@@ -100,32 +116,34 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
                             "Lanya is a website based on a typical e-shop layout, using Firebase and Stripe, combined with Vue 2 and Vuetify to make a Single Page Application. Link available soon",
                           ),
                         ),
-                        CarouselSlider(
-                          // check params of the plugin
-                          options: CarouselOptions(
-                            // TODO: relative size
-                            height: 550.0,
-                            autoPlay: true,
-                            autoPlayInterval: const Duration(seconds: 5),
-                            autoPlayAnimationDuration:
-                                const Duration(milliseconds: 800),
-                            autoPlayCurve: Curves.fastOutSlowIn,
+                        Expanded(
+                          child: CarouselSlider(
+                            // check params of the plugin
+                            options: CarouselOptions(
+                              height: 950.0,
+                              viewportFraction: 0.9,
+                              autoPlay: true,
+                              autoPlayInterval: const Duration(seconds: 5),
+                              autoPlayAnimationDuration:
+                                  const Duration(milliseconds: 800),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                            ),
+                            items: lanyaScreens.map((i) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 5.0),
+                                    child: Image.asset(
+                                      i,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  );
+                                },
+                              );
+                            }).toList(),
                           ),
-                          items: lanyaScreens.map((i) {
-                            return Builder(
-                              builder: (BuildContext context) {
-                                return Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 5.0),
-                                  child: Image.asset(
-                                    i,
-                                    fit: BoxFit.cover,
-                                  ),
-                                );
-                              },
-                            );
-                          }).toList(),
                         ),
                       ],
                     ),

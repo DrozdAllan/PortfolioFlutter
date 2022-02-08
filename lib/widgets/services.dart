@@ -8,14 +8,25 @@ class Services extends StatefulWidget {
 }
 
 class _ServicesState extends State<Services> {
+  late bool mobile;
   final List<bool> _isOpen = [true, false, false, false];
+
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.of(context).size.height >
+        MediaQuery.of(context).size.width) {
+      mobile = true;
+    } else {
+      mobile = false;
+    }
+
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           Row(
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               Text(
                 'What I can do for you',
@@ -27,9 +38,13 @@ class _ServicesState extends State<Services> {
             height: 100.0,
           ),
           Row(
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width / 2,
+                width: mobile
+                    ? MediaQuery.of(context).size.width / 1.1
+                    : MediaQuery.of(context).size.width / 2,
                 child: ExpansionPanelList(
                     animationDuration: const Duration(milliseconds: 1250),
                     dividerColor: Colors.blue[50],

@@ -13,6 +13,8 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
+  late bool mobile;
+
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _mailController;
   late TextEditingController _messageController;
@@ -30,11 +32,20 @@ class _ContactState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.of(context).size.height >
+        MediaQuery.of(context).size.width) {
+      mobile = true;
+    } else {
+      mobile = false;
+    }
+
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           Row(
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               Text(
                 'Let\'s talk !',
@@ -46,6 +57,8 @@ class _ContactState extends State<Contact> {
             height: 100.0,
           ),
           Row(
+            mainAxisAlignment:
+                mobile ? MainAxisAlignment.center : MainAxisAlignment.start,
             children: [
               Container(
                 decoration: const BoxDecoration(
@@ -56,7 +69,9 @@ class _ContactState extends State<Contact> {
                   ),
                 ),
                 padding: const EdgeInsets.all(34.0),
-                width: MediaQuery.of(context).size.width / 2,
+                width: mobile
+                    ? MediaQuery.of(context).size.width / 1.1
+                    : MediaQuery.of(context).size.width / 2,
                 height: MediaQuery.of(context).size.height / 2,
                 child: Form(
                   key: _formKey,
