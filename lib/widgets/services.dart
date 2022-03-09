@@ -20,7 +20,8 @@ class _ServicesState extends State<Services> {
       mobile = false;
     }
 
-    return SizedBox(
+    return Container(
+      padding: EdgeInsets.all(mobile ? 0.0 : 24.0),
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
@@ -47,13 +48,13 @@ class _ServicesState extends State<Services> {
                     : MediaQuery.of(context).size.width / 2,
                 child: ExpansionPanelList(
                     animationDuration: const Duration(milliseconds: 1250),
-                    dividerColor: Colors.blue[50],
+                    dividerColor: Colors.green[50],
                     elevation: 1,
                     expandedHeaderPadding: const EdgeInsets.all(0.0),
                     children: [
                       ExpansionPanel(
                           canTapOnHeader: true,
-                          backgroundColor: Colors.blue,
+                          backgroundColor: const Color(0xFF507c54),
                           headerBuilder: (context, isExpanded) => const Padding(
                               padding: EdgeInsets.all(20.0),
                               child: Text('Mobile Development')),
@@ -65,7 +66,7 @@ class _ServicesState extends State<Services> {
                           isExpanded: _isOpen[0]),
                       ExpansionPanel(
                           canTapOnHeader: true,
-                          backgroundColor: Colors.blue,
+                          backgroundColor: const Color(0xFF507c54),
                           headerBuilder: (context, isExpanded) => const Padding(
                               padding: EdgeInsets.all(20.0),
                               child: Text('Web Development')),
@@ -77,7 +78,7 @@ class _ServicesState extends State<Services> {
                           isExpanded: _isOpen[1]),
                       ExpansionPanel(
                           canTapOnHeader: true,
-                          backgroundColor: Colors.blue,
+                          backgroundColor: const Color(0xFF507c54),
                           headerBuilder: (context, isExpanded) => const Padding(
                               padding: EdgeInsets.all(20.0),
                               child: Text('Deployment')),
@@ -89,7 +90,7 @@ class _ServicesState extends State<Services> {
                           isExpanded: _isOpen[2]),
                       ExpansionPanel(
                           canTapOnHeader: true,
-                          backgroundColor: Colors.blue,
+                          backgroundColor: const Color(0xFF507c54),
                           headerBuilder: (context, isExpanded) => const Padding(
                               padding: EdgeInsets.all(20.0),
                               child: Text('Design')),

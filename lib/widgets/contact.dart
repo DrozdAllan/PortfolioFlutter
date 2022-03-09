@@ -39,7 +39,8 @@ class _ContactState extends State<Contact> {
       mobile = false;
     }
 
-    return SizedBox(
+    return Container(
+      padding: EdgeInsets.all(mobile ? 0.0 : 24.0),
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
@@ -62,7 +63,7 @@ class _ContactState extends State<Contact> {
             children: [
               Container(
                 decoration: const BoxDecoration(
-                  color: Colors.blue,
+                  color: Color(0xFF507c54),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30),
@@ -115,7 +116,7 @@ class _ContactState extends State<Contact> {
                             backgroundColor: MaterialStateProperty.all(
                                 isSuccessSent
                                     ? Colors.green
-                                    : Color.fromARGB(255, 24, 255, 236))),
+                                    : const Color(0xFF622C05))),
                         child: Text(
                             isSuccessSent ? 'Message sent !' : 'Send Message'),
                         onPressed: () async {

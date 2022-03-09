@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData myTheme = ThemeData(
-  primarySwatch: Colors.blue,
+  primarySwatch: Colors.green,
   brightness: Brightness.dark,
   textTheme: TextTheme(
     bodyText2: GoogleFonts.raleway(

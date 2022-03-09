@@ -16,14 +16,14 @@ class _MobileDrawerState extends ConsumerState<MobileDrawer> {
     final notifier = ref.read(mobileScrollProvider.notifier);
 
     return Drawer(
-      backgroundColor: Colors.blue,
+      backgroundColor: const Color(0xFF507c54),
       child: ListView(
         // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(
-              color: Colors.blue,
+              color: const Color(0xFF507c54),
             ),
             child: Column(
               children: [

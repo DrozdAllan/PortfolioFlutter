@@ -20,8 +20,15 @@ class _AboutState extends State<About> {
       mobile = false;
     }
 
-    return SizedBox(
+    return Container(
+      padding: EdgeInsets.all(mobile ? 0.0 : 24.0),
       height: MediaQuery.of(context).size.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image:
+                AssetImage('images/ivan-lopatin-yJEvZGhsSLY-unsplash-min.jpg'),
+            fit: BoxFit.cover),
+      ),
       child: Column(
         children: [
           Row(

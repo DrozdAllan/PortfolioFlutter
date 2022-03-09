@@ -32,7 +32,8 @@ class _SkillsState extends State<Skills> {
       mobile = false;
     }
 
-    return SizedBox(
+    return Container(
+      padding: EdgeInsets.all(mobile ? 0.0 : 24.0),
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [

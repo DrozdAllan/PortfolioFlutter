@@ -52,14 +52,22 @@ class MobileBody extends ConsumerWidget {
       children: [
         SingleChildScrollView(
           controller: mobilePager,
-          child: Column(
-            children: const [
-              About(),
-              Services(),
-              Skills(),
-              Portfolio(),
-              Contact(),
-            ],
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                      'images/annie-spratt-KDVo3qepq3I-unsplash-min.jpg'),
+                  fit: BoxFit.cover),
+            ),
+            child: Column(
+              children: const [
+                About(),
+                Services(),
+                Skills(),
+                Portfolio(),
+                Contact(),
+              ],
+            ),
           ),
         ),
         Align(
@@ -67,7 +75,7 @@ class MobileBody extends ConsumerWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FloatingActionButton(
-              backgroundColor: Colors.blue,
+              backgroundColor: const Color(0xFF507c54),
               onPressed: () => Scaffold.of(context).openDrawer(),
               child: const Icon(
                 Icons.chevron_left,

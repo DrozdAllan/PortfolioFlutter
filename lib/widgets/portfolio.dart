@@ -37,15 +37,16 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
     }
 
     final List lanyaScreens = [
-      'screenshots/lanya/Screenshot1.png',
-      'screenshots/lanya/Screenshot2.png',
-      'screenshots/lanya/Screenshot3.png',
-      'screenshots/lanya/Screenshot4.png',
-      'screenshots/lanya/Screenshot5.png',
-      'screenshots/lanya/Screenshot6.png',
+      'screenshots/lanya/Screenshot1-min.png',
+      'screenshots/lanya/Screenshot2-min.png',
+      'screenshots/lanya/Screenshot3-min.png',
+      'screenshots/lanya/Screenshot4-min.png',
+      'screenshots/lanya/Screenshot5-min.png',
+      'screenshots/lanya/Screenshot6-min.png',
     ];
 
-    return SizedBox(
+    return Container(
+      padding: EdgeInsets.all(mobile ? 0.0 : 15.0),
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
@@ -64,7 +65,7 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
             height: 25.0,
           ),
           Container(
-            color: Colors.blue,
+            color: const Color(0xFF507c54),
             child: TabBar(
               controller: _tabController,
               tabs: const [
@@ -73,19 +74,20 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
                 // Tab(text: 'Mültitaskÿ'),
                 // Tab(text: 'Fleeting'),
               ],
+              indicatorColor: Colors.white,
             ),
           ),
           Column(
             children: [
               Container(
-                color: Colors.blue,
+                color: const Color(0xFF507c54),
                 // TODO: relative size
                 // MANDATORY
                 height: MediaQuery.of(context).size.height / 1.25,
                 child: TabBarView(controller: _tabController, children: [
                   // IMAGES MY NEXT GAME
                   Container(
-                    color: Colors.blue,
+                    color: const Color(0xFF507c54),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -97,7 +99,7 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
                         ),
                         Expanded(
                           child: Image.asset(
-                            'screenshots/mynextgame/AppPresentation.png',
+                            'screenshots/mynextgame/AppPresentation-min.png',
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -106,7 +108,7 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
                   ),
                   // IMAGES LANYA
                   Container(
-                    color: Colors.blue,
+                    color: const Color(0xFF507c54),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

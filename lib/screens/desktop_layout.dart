@@ -46,7 +46,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: const Color(0xFF507c54),
       body: Row(children: [
         DesktopDrawer(desktopPager: desktopPager),
         Expanded(
@@ -57,12 +57,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               child: SingleChildScrollView(
                 controller: desktopPager,
                 child: Container(
-                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
                   width: 2000,
                   height: 4000,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('images/mountain.jpg'),
+                        image: AssetImage(
+                            'images/annie-spratt-KDVo3qepq3I-unsplash-min.jpg'),
                         fit: BoxFit.cover),
                   ),
                   //  @@@@@@@@@@@@@@@@@@@@@@@@ COLUMN FOR ALL THE VIEW
