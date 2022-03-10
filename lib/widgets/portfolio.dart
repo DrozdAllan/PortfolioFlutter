@@ -46,8 +46,10 @@ class _PortfolioState extends State<Portfolio> with TickerProviderStateMixin {
     ];
 
     return Container(
-      padding: EdgeInsets.all(mobile ? 0.0 : 15.0),
-      height: MediaQuery.of(context).size.height,
+      padding: mobile
+          ? const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 30.0)
+          : const EdgeInsets.fromLTRB(30.0, 100.0, 30.0, 100.0),
+      //   height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           Row(

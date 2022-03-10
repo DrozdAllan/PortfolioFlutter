@@ -57,8 +57,8 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               child: SingleChildScrollView(
                 controller: desktopPager,
                 child: Container(
-                  width: 2000,
-                  height: 4000,
+                  //   width: 2000,
+                  //   height: 4000,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(

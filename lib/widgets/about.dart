@@ -28,6 +28,10 @@ class _AboutState extends State<About> {
             image:
                 AssetImage('images/ivan-lopatin-yJEvZGhsSLY-unsplash-min.jpg'),
             fit: BoxFit.cover),
+        border: Border(
+          bottom:
+              BorderSide(width: 1.0, color: Color.fromARGB(255, 57, 88, 60)),
+        ),
       ),
       child: Column(
         children: [

@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final mobileScrollProvider =
-    StateNotifierProvider<MyNotifier, int>((ref) => MyNotifier());
+    StateNotifierProvider<MyNotifier, double>((ref) => MyNotifier());
 
-class MyNotifier extends StateNotifier<int> {
+class MyNotifier extends StateNotifier<double> {
   MyNotifier() : super(0);
 
-  void changeOffset(int newOffset) {
+  void changeOffset(double newOffset) {
     state = 0;
     state = newOffset;
   }

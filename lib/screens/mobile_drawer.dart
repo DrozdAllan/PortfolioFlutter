@@ -23,7 +23,7 @@ class _MobileDrawerState extends ConsumerState<MobileDrawer> {
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(
-              color: const Color(0xFF507c54),
+              color: Color(0xFF507c54),
             ),
             child: Column(
               children: [
@@ -54,7 +54,7 @@ class _MobileDrawerState extends ConsumerState<MobileDrawer> {
             ),
             title: const Text('Services'),
             onTap: () {
-              notifier.changeOffset(1);
+              notifier.changeOffset(1.0);
               Navigator.of(context).pop();
             },
           ),
@@ -65,7 +65,7 @@ class _MobileDrawerState extends ConsumerState<MobileDrawer> {
             ),
             title: const Text('Skills'),
             onTap: () {
-              notifier.changeOffset(2);
+              notifier.changeOffset(1.8);
               Navigator.of(context).pop();
             },
           ),
@@ -76,7 +76,7 @@ class _MobileDrawerState extends ConsumerState<MobileDrawer> {
             ),
             title: const Text('Portfolio'),
             onTap: () {
-              notifier.changeOffset(3);
+              notifier.changeOffset(2.6);
               Navigator.of(context).pop();
             },
           ),
@@ -87,7 +87,7 @@ class _MobileDrawerState extends ConsumerState<MobileDrawer> {
             ),
             title: const Text('Contact'),
             onTap: () {
-              notifier.changeOffset(4);
+              notifier.changeOffset(3.5);
               Navigator.of(context).pop();
             },
           ),

@@ -39,7 +39,7 @@ class MobileBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<int>(mobileScrollProvider, (previous, next) {
+    ref.listen<double>(mobileScrollProvider, (previous, next) {
       if (next != previous) {
         mobilePager.animateTo(MediaQuery.of(context).size.height * next,
             duration: const Duration(milliseconds: 800), curve: Curves.easeIn);

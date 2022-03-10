@@ -96,7 +96,8 @@ class DesktopDrawer extends StatelessWidget {
                 ),
                 title: const Text('Portfolio'),
                 onTap: () {
-                  desktopPager.animateTo(MediaQuery.of(context).size.height * 3,
+                  desktopPager.animateTo(
+                      MediaQuery.of(context).size.height * 2.9,
                       duration: const Duration(milliseconds: 800),
                       curve: Curves.easeIn);
                 },
